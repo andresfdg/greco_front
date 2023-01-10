@@ -4,7 +4,7 @@
       <div class="title">
         <img src="../assets/log.jpeg" alt="" />
         <br />
-        <span>Login</span>
+        <span>LOGIN AMAURY</span>
       </div>
       <form @submit.prevent="login" class="form1">
         <input
