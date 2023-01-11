@@ -77,7 +77,7 @@ const login = async () => {
 
     let tokens = jwt.split(".");
     let to = JSON.parse(atob(tokens[1]));
-
+    localStorage.setItem("type", to.type);
     store.auth = to.type;
     data.alert = false;
     if (data.type == "Person") {

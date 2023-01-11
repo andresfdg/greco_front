@@ -28,12 +28,17 @@
           <li class="nav-item" v-if="store.auth == 'Person'">
             <router-link to="/home" class="nav-link active">Home</router-link>
           </li>
-          <li class="nav-item" v-if="store.auth">
+          <li class="nav-item" v-if="store.auth == 'Person'">
             <router-link to="/myorders" class="nav-link active"
               >MyOrders</router-link
             >
           </li>
-          <li class="nav-item" v-if="store.auth">
+          <li class="nav-item" v-if="store.auth == 'Store'">
+            <router-link to="/storeorders" class="nav-link active"
+              >StoreOrders</router-link
+            >
+          </li>
+          <li class="nav-item" v-if="store.auth == 'Person'">
             <router-link to="/home" class="nav-link active">About</router-link>
           </li>
           <li class="nav-item" v-if="store.auth">
