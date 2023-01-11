@@ -9,16 +9,14 @@
     <div>
       <h4>city: {{ data.user.city }}!</h4>
     </div>
-    <div v-for="i in data.stores" :key="i">
-      <div>
+
+    
+    <div v-for="i in data.stores" :key="i" >
         <router-link :to="`homestore/${i.id}`">
-          <h2>
-            {{ i.name }}
-          </h2>
+          <CardStoreVue :title=i.name  :date=i.date ></CardStoreVue> 
         </router-link>
-      </div>
-      {{ i }}
     </div>
+
   </div>
 </template>
 
@@ -26,6 +24,8 @@
 import { reactive } from "@vue/reactivity";
 import { onMounted } from "@vue/runtime-core";
 import { useStore } from "../stores/store";
+import CardStoreVue from "../components/CardStore.vue";
+
 
 const store = useStore();
 
@@ -60,4 +60,6 @@ onMounted(() => {
 });
 </script>
 
-<style></style>
+<style>
+
+</style>
