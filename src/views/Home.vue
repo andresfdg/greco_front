@@ -1,22 +1,19 @@
 <template>
-  <div class="container">
-    <div>
-      <h4>hello {{ data.user.name }}!</h4>
+  <div class="home vh-100">
+    <div class="container">
+      <div class="row">
+        <div class="row">
+          <div class="col-lg-2 col-sm-6" v-for="i in data.stores" :key="i">
+            <router-link
+              style="text-decoration: none; color: inherit"
+              :to="`homestore/${i.id}`"
+            >
+              <CardStoreVue :title="i.name" :date="i.date"></CardStoreVue>
+            </router-link>
+          </div>
+        </div>
+      </div>
     </div>
-    <div>
-      <h4>phone: {{ data.user.phone }}!</h4>
-    </div>
-    <div>
-      <h4>city: {{ data.user.city }}!</h4>
-    </div>
-
-    
-    <div v-for="i in data.stores" :key="i" >
-        <router-link :to="`homestore/${i.id}`">
-          <CardStoreVue :title=i.name  :date=i.date ></CardStoreVue> 
-        </router-link>
-    </div>
-
   </div>
 </template>
 
@@ -25,7 +22,6 @@ import { reactive } from "@vue/reactivity";
 import { onMounted } from "@vue/runtime-core";
 import { useStore } from "../stores/store";
 import CardStoreVue from "../components/CardStore.vue";
-
 
 const store = useStore();
 
@@ -61,5 +57,7 @@ onMounted(() => {
 </script>
 
 <style>
-
+.home {
+  background-color: rgb(222, 245, 237);
+}
 </style>

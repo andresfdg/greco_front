@@ -1,26 +1,54 @@
 <template>
-<div class="carts">
-<div class="col-3 card">   
-  <h1>Esta tienda se llama: {{ title }}</h1>
-  <h2> Se creo el: {{ date}}</h2>
-</div>
-</div>
-
+  <div class="card montana mt-3">
+    <p class="title p-1 m-1">{{ title }}</p>
+    <img
+      class="m-1"
+      src="https://i0.wp.com/musiconthehilldc.com/wp-content/uploads/2021/02/20170907_MusicontheHill175.jpg?fit=1200%2C700&ssl=1https://i0.wp.com/musiconthehilldc.com/wp-content/uploads/2021/02/20170907_MusicontheHill175.jpg?fit=1200%2C700&ssl=1"
+      alt=""
+    />
+    <div class="x border">
+      <div class="s container">
+        <p>Description</p>
+        <p class="">
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur
+          harumjdjdjdjdjdj
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="container"></div>
+      <button class="col-3 btn"><i class="bx bxs-like"></i></button>
+      <img class="col-6 border" src="../assets/log.jpeg" />
+      <button class="col-3 btn"><i class="bx bxs-star"></i></button>
+    </div>
+  </div>
 </template>
 
 <script setup>
 const props = defineProps({
   title: String,
   date: String,
-})
-
+});
 </script>
 
 <style>
-.carts {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+.montana {
+  font-family: sans-serif;
+
+  box-shadow: rgba(49, 255, 221, 0.25) 0px 6px 12px -2px,
+    rgba(28, 205, 190, 0.508) 0px 3px 7px -3px;
+  border-radius: 20px;
+}
+
+.title {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+.x {
+  font-size: 12px;
+  font-weight: bold;
+}
+.s {
 }
 </style>

@@ -33,13 +33,13 @@
               >MyOrders</router-link
             >
           </li>
+          <li class="nav-item" v-if="store.auth == 'Person'">
+            <router-link to="/gield" class="nav-link active">gield</router-link>
+          </li>
           <li class="nav-item" v-if="store.auth == 'Store'">
             <router-link to="/storeorders" class="nav-link active"
               >StoreOrders</router-link
             >
-          </li>
-          <li class="nav-item" v-if="store.auth == 'Person'">
-            <router-link to="/home" class="nav-link active">About</router-link>
           </li>
           <li class="nav-item" v-if="store.auth">
             <router-link @click="logout" to="/" class="nav-link active"

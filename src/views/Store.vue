@@ -1,23 +1,32 @@
 <template>
-  <div>
-    <div>working</div>
-    <div>
-      <h1>{{ data.store }}</h1>
-    </div>
-    <div>
-      <form @submit.prevent="createorder" v-if="data.form">
-        <label
-          >cuantos {{ data.name }},{{ data.id }}:
-          <input type="text" v-model="data.quantity"
-        /></label>
-        <button>enviar</button>
-      </form>
-    </div>
-    <div class="row">
-      <div v-for="i in data.items" :key="i" class="col-3 card">
-        <h5 @click="() => l(i)">
-          {{ i }}
-        </h5>
+  <div class="store vh-100">
+    <div class="container">
+      <h1 class="titlestore">{{ data.store.name }}</h1>
+      <h3 class="products">Products</h3>
+
+      <div>
+        <form @submit.prevent="createorder" v-if="data.form">
+          <label
+            >cuantos {{ data.name }},{{ data.id }}:
+            <input type="text" v-model="data.quantity"
+          /></label>
+          <button>enviar</button>
+        </form>
+      </div>
+      <div class="row">
+        <div v-for="i in data.items" :key="i" class="col-3 card">
+          <h5 @click="() => l(i)">
+            <div>
+              {{ i.name }}
+            </div>
+            <div>
+              {{ i.category }}
+            </div>
+            <div>
+              {{ i.price }}
+            </div>
+          </h5>
+        </div>
       </div>
     </div>
   </div>
@@ -93,4 +102,12 @@ onMounted(() => {
 });
 </script>
 
-<style></style>
+<style>
+.store {
+  background-color: rgb(222, 245, 237);
+}
+
+.products {
+  text-align: center;
+}
+</style>
