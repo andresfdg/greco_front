@@ -1,7 +1,8 @@
 <template>
-  <div class="orders vh-100">
+  <div class="orders container-fluid">
     <div class="container">
       <p class="title">.</p>
+      <router-link to="/home"><i class="bx bx-arrow-back"></i></router-link>
       <p class="title mt-1">My orders</p>
 
       <div>

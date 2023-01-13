@@ -120,6 +120,7 @@
 
         <button>Sign up</button>
       </form>
+      <span v-if="data.userc" class="usercreated">USER CREATED!!</span>
       <div class="footer">
         <img src="../assets/footer.jpeg" alt="" height="20px" />
       </div>
@@ -143,6 +144,7 @@ const router = useRouter();
 const route = useRoute();
 
 const data = reactive({
+  userc: false,
   form: false,
   form2: false,
   name: "",
@@ -170,8 +172,11 @@ const signupuser = async () => {
     body: JSON.stringify(data),
     headers: { "Content-type": "application/json; charset=UTF-8" },
   });
-
-  router.push("/");
+  data.userc = true;
+  setTimeout(() => {
+    router.push("/");
+    data.userc = false;
+  }, 3000);
 };
 
 const signupstore = async () => {
@@ -181,7 +186,11 @@ const signupstore = async () => {
     headers: { "Content-type": "application/json; charset=UTF-8" },
   });
 
-  router.push("/");
+  data.userc = true;
+  setTimeout(() => {
+    router.push("/");
+    data.userc = false;
+  }, 3000);
 };
 
 const activeform = () => {
@@ -266,5 +275,11 @@ const activeform2 = () => {
 }
 .s {
   display: flex;
+}
+
+.usercreated {
+  font-size: 30px;
+  color: forestgreen;
+  font-weight: bold;
 }
 </style>

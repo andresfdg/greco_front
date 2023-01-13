@@ -3,28 +3,26 @@
     <div class="container">
       <h1 class="titlestore">{{ data.store.name }}</h1>
       <h3 class="products">Products</h3>
+      <router-link to="/home"><i class="bx bx-arrow-back"></i></router-link>
 
-      <div>
-        <form @submit.prevent="createorder" v-if="data.form">
-          <label
-            >cuantos {{ data.name }},{{ data.id }}:
-            <input type="text" v-model="data.quantity"
-          /></label>
-          <button>enviar</button>
-        </form>
-      </div>
       <div class="row">
-        <div v-for="i in data.items" :key="i" class="col-3 card">
+        <div class="form d-flex justify-content-center">
+          <form @submit.prevent="createorder" v-if="data.form">
+            <label class="text"
+              >cuantos {{ data.name }},{{ data.id }}:
+              <input type="text" v-model="data.quantity"
+            /></label>
+            <button class="btn button">add</button>
+          </form>
+        </div>
+        <span class="span d-flex justify-content-center" v-if="data.span"
+          >added!</span
+        >
+        <div v-for="i in data.items" :key="i" class="col-3 card m-5">
           <h5 @click="() => l(i)">
-            <div>
-              {{ i.name }}
-            </div>
-            <div>
-              {{ i.category }}
-            </div>
-            <div>
-              {{ i.price }}
-            </div>
+            <div>product: {{ i.name }}</div>
+            <div>category: {{ i.category }}</div>
+            <div>price: {{ i.price }}</div>
           </h5>
         </div>
       </div>
@@ -39,6 +37,7 @@ import { useRouter, useRoute } from "vue-router";
 const router = useRoute();
 
 const data = reactive({
+  span: false,
   store: {},
   items: {},
   form: false,
@@ -94,6 +93,12 @@ const createorder = () => {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
   });
+
+  data.form = false;
+  data.span = true;
+  setTimeout(() => {
+    data.span = false;
+  }, 3000);
 };
 
 onMounted(() => {
@@ -109,5 +114,42 @@ onMounted(() => {
 
 .products {
   text-align: center;
+}
+.form input {
+  border: none;
+  border-radius: 4px;
+  margin: 1rem;
+  padding: 3px;
+  box-shadow: rgba(210, 210, 232, 0.25) 0px 6px 12px -2px,
+    rgba(249, 249, 249, 0.3) 0px 3px 7px -3px;
+}
+
+.form {
+  background-color: rgb(112, 173, 173);
+}
+
+.button {
+  background-color: rgb(120, 187, 150);
+  font-family: sans-serif;
+  font-weight: bold;
+  border: solid;
+}
+
+.text {
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.bx-arrow-back {
+  font-size: 40px;
+  background-color: white;
+  color: black;
+  border-radius: 4px;
+}
+
+.span {
+  color: crimson;
+  font-size: 40px;
 }
 </style>

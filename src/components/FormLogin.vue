@@ -29,6 +29,7 @@
         <button>Login</button>
         <span class="n" v-if="data.alert">Email/Password Fail</span>
       </form>
+
       <div class="footer">
         <img src="../assets/footer.jpeg" alt="" height="20px" />
       </div>
