@@ -176,7 +176,7 @@ const signupuser = async () => {
   setTimeout(() => {
     router.push("/");
     data.userc = false;
-  }, 3000);
+  }, 2000);
 };
 
 const signupstore = async () => {
@@ -190,7 +190,7 @@ const signupstore = async () => {
   setTimeout(() => {
     router.push("/");
     data.userc = false;
-  }, 3000);
+  }, 2000);
 };
 
 const activeform = () => {

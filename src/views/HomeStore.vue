@@ -1,30 +1,60 @@
 <template>
-  <div>
+  <div class="homestore">
     <div class="container mt-3">
       <div class="divide">
-        <h1>info</h1>
+        <div>
+          {{ data.infostore }}
+        </div>
 
-        <button @click="() => (data.form = !data.form)">AGREGAR TIENDA</button>
+        <button class="adds" @click="() => (data.form = !data.form)">
+          AGREGAR TIENDA
+        </button>
       </div>
       <form @submit.prevent="addStores" v-if="data.form">
         <input placeholder="Store name" v-model="ada.name" />
         <button>create store</button>
       </form>
 
-      <div>
-        {{ data.store }}
+      <div class="cont">
+        <div>
+          <h4>create item</h4>
+          <form class="form" @submit.prevent="addItem">
+            <label>
+              <input
+                required
+                type="text"
+                name=""
+                id=""
+                v-model="item.name"
+                placeholder="name"
+              />
+            </label>
+            <label>
+              <input
+                required
+                type="text"
+                name=""
+                id=""
+                v-model="item.category"
+                placeholder="category"
+              />
+            </label>
+            <label>
+              <input
+                required
+                type="number"
+                name=""
+                id=""
+                v-model.number="item.price"
+                placeholder="price"
+              />
+            </label>
+
+            <button>add</button>
+            <span v-if="data.span"> added!</span>
+          </form>
+        </div>
       </div>
-    </div>
-    <div>
-      {{ data.infostore }}
-    </div>
-    <div>
-      <button @click="addItem">ADD ITEMS</button>
-      <form>
-        <input type="text" name="" id="" />
-        <button>add</button>
-        {{ data.infoitem }}
-      </form>
     </div>
   </div>
 </template>
@@ -34,6 +64,7 @@ import { reactive } from "@vue/reactivity";
 import { onMounted } from "@vue/runtime-core";
 
 const data = reactive({
+  span: false,
   form: false,
   store: {},
   infostore: {},
@@ -41,13 +72,13 @@ const data = reactive({
 });
 
 const ada = reactive({
-  name: "ddd",
+  name: "",
 });
 
 const item = reactive({
-  name: "guitarra",
-  category: "musica",
-  price: 500,
+  name: "",
+  category: "",
+  price: "",
   actual_popularity: "low",
   discount_low: 5,
   discount_medium: 10,
@@ -84,6 +115,15 @@ const addItem = async () => {
   data.store = da;
 
   infoitem();
+
+  data.span = true;
+  setTimeout(() => {
+    data.span = false;
+  }, 1000);
+
+  item.name = "";
+  item.category = "";
+  item.price = "";
 };
 
 const infostore = async () => {
@@ -123,5 +163,51 @@ onMounted(() => {
 .divide {
   display: flex;
   justify-content: space-between;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+.form input {
+  padding: 10px;
+  border-radius: 4px;
+  border: none;
+  margin: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.cont {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  text-align: center;
+  font-family: sans-serif;
+  background-color: green;
+  padding: 10px;
+  border-radius: 10px;
+  color: antiquewhite;
+}
+
+.cont button {
+  border-radius: 4px;
+  padding: 8px;
+  margin: 10px;
+  background-color: cadetblue;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.adds {
+  border-radius: 4px;
+  padding: 10px;
+  margin: 10px;
+  background-color: cadetblue;
+  font-weight: bold;
+}
+
+.homestore {
+  background-color: rgb(222, 245, 237);
 }
 </style>

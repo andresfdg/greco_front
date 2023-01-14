@@ -13,9 +13,12 @@
           :key="i"
         >
           <div>gield_id: {{ i.gield_id }}</div>
-          <div>total: {{ i.sum }}</div>
+          <div>name: {{ i.name }}</div>
+          <div>price: {{ i.price }}</div>
+          <div>total people: {{ i.order_number }}</div>
         </div>
       </div>
+      {{ data.gields }}
     </div>
   </div>
 </template>
@@ -25,18 +28,26 @@ import { reactive } from "@vue/reactivity";
 import { onMounted } from "@vue/runtime-core";
 
 const data = reactive({
-  gields: {},
+  gields: [],
+  filter: [],
 });
 
-const getgields = () => {
-  fetch("http://127.0.0.1:8000/storeorder", {
+const getgields = async () => {
+  const res = await fetch("http://127.0.0.1:8000/storeorder", {
     headers: {
       "Content-type": "application/json; charset=UTF-8",
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
-  })
-    .then((res) => res.json())
-    .then((da) => (data.gields = da));
+  });
+  const da = await res.json();
+
+  let result = da.reduce((unique, o) => {
+    if (!unique.some((obj) => obj.gield_id === o.gield_id)) {
+      unique.push(o);
+    }
+    return unique;
+  }, []);
+  data.gields = result;
 };
 
 onMounted(() => {
@@ -50,7 +61,7 @@ onMounted(() => {
 }
 .g {
   background-color: rgb(66, 66, 66);
-  height: 100px;
+  height: 150px;
   border: none;
   font-family: sans-serif;
   font-size: 20px;
