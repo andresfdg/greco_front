@@ -1,6 +1,6 @@
 <template>
-  <div class="homestore">
-    <div class="container mt-3">
+  <div class="homestore vh-100">
+    <div class="container">
       <div class="divide">
         <div>
           {{ data.infostore }}
@@ -46,6 +46,36 @@
                 name=""
                 id=""
                 v-model.number="item.price"
+                placeholder="price"
+              />
+            </label>
+            <label>
+              <input
+                required
+                type="number"
+                name=""
+                id=""
+                v-model.number="item.discount_low"
+                placeholder="price"
+              />
+            </label>
+            <label>
+              <input
+                required
+                type="number"
+                name=""
+                id=""
+                v-model.number="item.discount_medium"
+                placeholder="price"
+              />
+            </label>
+            <label>
+              <input
+                required
+                type="number"
+                name=""
+                id=""
+                v-model.number="item.discount_high"
                 placeholder="price"
               />
             </label>

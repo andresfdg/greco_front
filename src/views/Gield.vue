@@ -16,6 +16,8 @@
           <div>name: {{ i.name }}</div>
           <div>price: {{ i.price }}</div>
           <div>total people: {{ i.order_number }}</div>
+          <div>quantity max: {{ i.pop_max }}</div>
+          <div>state: {{ i.active }}</div>
         </div>
       </div>
       {{ data.gields }}
@@ -61,7 +63,7 @@ onMounted(() => {
 }
 .g {
   background-color: rgb(66, 66, 66);
-  height: 150px;
+  height: 200px;
   border: none;
   font-family: sans-serif;
   font-size: 20px;

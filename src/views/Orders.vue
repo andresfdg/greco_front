@@ -1,5 +1,5 @@
 <template>
-  <div class="orders container-fluid">
+  <div class="orders container-fluid vh-100">
     <div class="container">
       <p class="title">.</p>
       <router-link to="/home"><i class="bx bx-arrow-back"></i></router-link>
