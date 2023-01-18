@@ -18,14 +18,16 @@
         <span class="span d-flex justify-content-center" v-if="data.span"
           >added!</span
         >
-        <div v-for="i in data.items" :key="i" class="col-3 card m-5">
+        <div v-for="(i, a) in data.items" :key="i" class="col-3 card m-5">
           <h5 @click="() => l(i)">
             <div>product: {{ i.name }}</div>
             <div>category: {{ i.category }}</div>
             <div>price: {{ i.price }}</div>
+            <div>availability: {{ data.availability[a] }}</div>
           </h5>
         </div>
       </div>
+      {{ data.availability }}
     </div>
   </div>
 </template>
@@ -44,6 +46,7 @@ const data = reactive({
   name: "",
   id: "",
   quantity: 0,
+  availability: [],
 });
 
 const store = () => {
@@ -60,17 +63,28 @@ const store = () => {
     .then((da) => (data.store = da));
 };
 
-const items = () => {
+const items = async () => {
   const id = router.params.id;
   console.log(id);
-  fetch(`http://127.0.0.1:8000/storeitems/${id}`, {
+  const res = await fetch(`http://127.0.0.1:8000/storeitems/${id}`, {
     headers: {
       "Content-type": "application/json; charset=UTF-8",
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
-  })
-    .then((res) => res.json())
-    .then((da) => (data.items = da));
+  });
+  const da = await res.json();
+  data.items = da;
+  console.log(da);
+  for (let i in da) {
+    fetch(`http://127.0.0.1:8000/availability/${da[i].id}`, {
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((x) => data.availability.push(x));
+  }
 };
 
 const l = (i) => {
