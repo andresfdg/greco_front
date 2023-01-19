@@ -23,17 +23,16 @@
             <div>product: {{ i.name }}</div>
             <div>category: {{ i.category }}</div>
             <div>price: {{ i.price }}</div>
-            <div>availability: {{ data.availability[a] }}</div>
+            <div>availability:{{ !i.availability ? 10 : i.availability }}</div>
           </h5>
         </div>
       </div>
-      {{ data.availability }}
     </div>
   </div>
 </template>
 
 <script setup>
-import { onMounted, reactive } from "@vue/runtime-core";
+import { onMounted, reactive, onUnmounted } from "@vue/runtime-core";
 import { useRouter, useRoute } from "vue-router";
 
 const router = useRoute();
@@ -46,7 +45,6 @@ const data = reactive({
   name: "",
   id: "",
   quantity: 0,
-  availability: [],
 });
 
 const store = () => {
@@ -75,7 +73,7 @@ const items = async () => {
   const da = await res.json();
   data.items = da;
   console.log(da);
-  for (let i in da) {
+  /* for (let i in da) {
     fetch(`http://127.0.0.1:8000/availability/${da[i].id}`, {
       headers: {
         "Content-type": "application/json; charset=UTF-8",
@@ -84,7 +82,7 @@ const items = async () => {
     })
       .then((res) => res.json())
       .then((x) => data.availability.push(x));
-  }
+  } */
 };
 
 const l = (i) => {
