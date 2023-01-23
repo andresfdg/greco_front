@@ -5,7 +5,6 @@
         <div>
           {{ data.infostore }}
         </div>
-
         <button class="adds" @click="() => (data.form = !data.form)">
           AGREGAR TIENDA
         </button>

@@ -15,7 +15,7 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import("../views/AboutView.vue"),
+      component: () => import("../views/personuserview/AboutView.vue"),
     },
     {
       path: "/home",
@@ -23,7 +23,7 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import("../views/Home.vue"),
+      component: () => import("../views/personuserview/Home.vue"),
     },
     {
       path: "/homestore",
@@ -31,7 +31,7 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import("../views/HomeStore.vue"),
+      component: () => import("../views/storeview/HomeStore.vue"),
     },
     {
       path: "/homestore/:id",
@@ -39,7 +39,7 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import("../views/Store.vue"),
+      component: () => import("../views/personuserview/Store.vue"),
     },
     {
       path: "/myorders",
@@ -47,7 +47,7 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import("../views/Orders.vue"),
+      component: () => import("../views/personuserview/Orders.vue"),
     },
     {
       path: "/storeorders",
@@ -55,7 +55,7 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import("../views/StoreOrders.vue"),
+      component: () => import("../views/storeview/StoreOrders.vue"),
     },
     {
       path: "/gield",
@@ -63,7 +63,7 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import("../views/Gield.vue"),
+      component: () => import("../views/personuserview/UserGields.vue"),
     },
     {
       path: "/storegieldorder/:id",
@@ -71,15 +71,15 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import("../views/StoreGieldOrders.vue"),
+      component: () => import("../views/storeview/StoreGieldOrders.vue"),
     },
     {
-      path: "/guielditem/:id/:name/:price",
-      name: "/guielditem/:id/:name/:price",
+      path: "/guielditem/:id/:name/:price/:open",
+      name: "/guielditem/:id/:name/:price/:open",
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import("../views/GuieldItem.vue"),
+      component: () => import("../views/personuserview/GuieldOfItem.vue"),
     },
     {
       path: "/items",
@@ -87,7 +87,7 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import("../views/Items.vue"),
+      component: () => import("../views/storeview/Items.vue"),
     },
   ],
 });

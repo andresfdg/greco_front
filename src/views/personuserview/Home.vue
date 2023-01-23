@@ -6,8 +6,8 @@
           <div class="col-lg-2 col-sm-6" v-for="i in data.stores" :key="i">
             <router-link
               style="text-decoration: none; color: inherit"
-              :to="`homestore/${i.id}`"
-            >
+              :to="`homestore/${i.id}`">
+              
               <CardStoreVue :title="i.name" :date="i.date"></CardStoreVue>
             </router-link>
           </div>
@@ -20,8 +20,8 @@
 <script setup>
 import { reactive } from "@vue/reactivity";
 import { onMounted } from "@vue/runtime-core";
-import { useStore } from "../stores/store";
-import CardStoreVue from "../components/CardStore.vue";
+import { useStore } from "../../stores/store";
+import CardStoreVue from "../../components/CardStore.vue";
 
 const store = useStore();
 

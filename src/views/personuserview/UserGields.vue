@@ -10,8 +10,8 @@
         <div
           class="g card col-3 m-5 d-flex justify-content-center"
           v-for="i in data.gields"
-          :key="i"
-        >
+          :key="i">
+
           <div>gield_id: {{ i.gield_id }}</div>
           <div>name: {{ i.name }}</div>
           <div>price: {{ i.price }}</div>
@@ -19,8 +19,8 @@
           <div>quantity max: {{ i.pop_max }}</div>
           <div>state: {{ i.active }}</div>
         </div>
+        
       </div>
-      {{ data.gields }}
     </div>
   </div>
 </template>

@@ -19,11 +19,12 @@
           >added!</span
         >
         <div v-for="(i, a) in data.items" :key="i" class="col-3 card m-5">
-          <router-link :to="`/guielditem/${i.id}/${i.name}/${i.price}`">
+          <router-link :to="`/guielditem/${i.id}/${i.name}/${i.price}/${i.open}`">
             <div>product: {{ i.name }}</div>
             <div>category: {{ i.category }}</div>
             <div>price: {{ i.price }}</div>
             <div>availability:{{ !i.availability ? 10 : i.availability }}</div>
+            <div>open: {{ i.open }}</div>
           </router-link>
         </div>
       </div>

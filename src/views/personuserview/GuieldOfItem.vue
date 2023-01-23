@@ -12,7 +12,6 @@
           <input type="number" placeholder="quantity" v-model="data.quantity" />
           <button>add</button>
           <div>cost:{{ router.params.price * data.quantity }}</div>
-
           <div>discount: {{ data.discount }}%</div>
           <div>
             total:{{
@@ -21,6 +20,17 @@
             }}
           </div>
           <span>added</span>
+        </form>
+        <p  v-if="data.open">Or</p>
+        <button  v-if="data.open" @click="() => activeformguild()">Create new Guild</button>
+      </div>
+
+      <div>
+        <form @submit.prevent="craete_guild" class="formitemguild" v-if="data.formguild">
+          <input type="number" placeholder="quantity" v-model="data.quantity" />
+          <input type="number" placeholder="Guild size in items" v-model="data.quantity_max" />
+          <input type="number" placeholder="duration in days" v-model="data.life_time" />
+          <button>Create</button>
         </form>
       </div>
 
@@ -49,11 +59,20 @@ import { onMounted } from "@vue/runtime-core";
 import { useRoute } from "vue-router";
 
 const data = reactive({
+  guields: [],
   id_guield: "",
   discount: "",
-  form: false,
   quantity: "",
-  guields: [],
+
+  form: false,
+  formguild: false,
+  open:false,
+
+  itemid: 0,
+  quantity_max: "",
+  life_time: "",
+  
+  
 });
 
 const router = useRoute();
@@ -68,15 +87,24 @@ const getguields = async () => {
   });
 
   const da = await res.json();
-
   data.guields = da;
 };
 
 const activeform = (i) => {
   data.discount = i.discount;
   data.id_guield = i.id;
-
   data.form = true;
+  data.formguild=false;
+
+  const isopen = router.params.open == 'true';
+  data.open = isopen;
+
+};
+
+const activeformguild = () => {
+  data.form = false;
+  data.formguild=true;
+  data.open=false;
 };
 
 const craete_order = async () => {
@@ -93,12 +121,34 @@ const craete_order = async () => {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
   });
-
   const da = res.json();
   console.log(da);
   data.form = false;
   getguields();
 };
+
+const craete_guild = async () => {
+  let payload = {
+    item: Number(router.params.id),
+    quantity: Number(data.quantity),
+    quantity_max: Number(data.quantity_max),
+    life_time: Number(data.life_time),
+  };
+
+  const res = await fetch(`http://127.0.0.1:8000/user_create_new_guild`, {
+    method: "POST",
+    body: JSON.stringify(payload),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  });
+  const da = res.json();
+  console.log(da);
+  data.form = false;
+  getguields();
+};
+
 
 onMounted(() => {
   getguields();

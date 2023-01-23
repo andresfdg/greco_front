@@ -7,7 +7,6 @@
           <thead>
             <tr>
               <th scope="col">name</th>
-
               <th scope="col">price</th>
               <th scope="col">gield_id</th>
               <th scope="col">total_ord</th>
@@ -17,7 +16,6 @@
           <tbody>
             <tr class="m-1" v-for="i in data.orders" :key="i">
               <td>{{ i.name }}</td>
-
               <td>{{ i.price }}</td>
               <td>{{ i.gield_id }}</td>
               <td>{{ i.total_ord }}</td>
