@@ -11,8 +11,6 @@
               <th scope="col">price</th>
               <th scope="col">gield_id</th>
               <th scope="col">total_ord</th>
-              <th scope="col">total_q</th>
-              <th scope="col">discount</th>
               <th scope="col">view</th>
             </tr>
           </thead>
@@ -23,12 +21,6 @@
               <td>{{ i.price }}</td>
               <td>{{ i.gield_id }}</td>
               <td>{{ i.total_ord }}</td>
-              <td>{{ i.totalq }}</td>
-              <td>
-                <span class="discount">
-                  {{ i.totalq > 10 ? i.discount_medium : i.discount_low }}</span
-                >
-              </td>
 
               <td>
                 <router-link :to="`storegieldorder/${i.gield_id}`">

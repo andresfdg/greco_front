@@ -37,6 +37,9 @@
             <router-link to="/gield" class="nav-link active">gield</router-link>
           </li>
           <li class="nav-item" v-if="store.auth == 'Store'">
+            <router-link to="/items" class="nav-link active">Items</router-link>
+          </li>
+          <li class="nav-item" v-if="store.auth == 'Store'">
             <router-link to="/storeorders" class="nav-link active"
               >StoreOrders</router-link
             >

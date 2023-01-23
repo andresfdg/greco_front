@@ -49,6 +49,10 @@
                 placeholder="price"
               />
             </label>
+            <select v-model="item.open" id="">
+              <option :value="true">Open</option>
+              <option :value="false">Close</option>
+            </select>
             <label>
               <input
                 required
@@ -106,6 +110,7 @@ const ada = reactive({
 });
 
 const item = reactive({
+  open: false,
   name: "",
   category: "",
   price: "",
