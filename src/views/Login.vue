@@ -19,6 +19,6 @@ import FormVue from "../components/FormLogin.vue";
 }
 
 .containe {
-  background-color: aquamarine;
+  background-color: #5bcf8b;
 }
 </style>
