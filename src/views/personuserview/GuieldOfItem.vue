@@ -50,18 +50,24 @@
           class="formitem"
           v-if="data.formguild"
         >
+          <select v-model="data.quantity_max">
+            <option :value="data.quantity_low">{{ data.quantity_low }}</option>
+            <option :value="data.quantity_medium">
+              {{ data.quantity_medium }}
+            </option>
+            <option :value="data.quantity_high">
+              {{ data.quantity_high }}
+            </option>
+          </select>
+
           <input type="number" placeholder="quantity" v-model="data.quantity" />
-          <input
-            type="number"
-            placeholder="Guild size in items"
-            v-model="data.quantity_max"
-          />
           <input
             type="number"
             placeholder="duration in days"
             v-model="data.life_time"
           />
           <button class="btguild">create!</button>
+          {{ data.quantity_max }}
         </form>
       </div>
 
@@ -74,7 +80,7 @@
         >
           <div class="alm">
             <div>
-              <div>gield_id: {{ router.params.name }}</div>
+              <div>name: {{ router.params.name }}</div>
               <div>actual_quantity: {{ i.actual_quantity }}</div>
               <div>discount: {{ i.discount }}</div>
               <div>quantity_max: {{ i.quantity_max }}</div>
@@ -111,8 +117,12 @@ const data = reactive({
   open: false,
 
   itemid: 0,
-  quantity_max: "",
+  quantity_max: "52",
   life_time: "",
+  item: [],
+  quantity_low: "",
+  quantity_medium: "",
+  quantity_high: "",
 });
 
 const router = useRoute();
@@ -144,6 +154,7 @@ const activeformguild = () => {
   data.form = false;
   data.formguild = true;
   data.open = false;
+  get_item();
 };
 
 const craete_order = async () => {
@@ -186,6 +197,21 @@ const craete_guild = async () => {
   console.log(da);
   data.form = false;
   getguields();
+};
+
+const get_item = async () => {
+  const res = await fetch(`http://127.0.0.1:8000/item/${router.params.id}`, {
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  });
+
+  const da = await res.json();
+
+  data.quantity_low = da.quantity_low;
+  data.quantity_medium = da.quantity_medium;
+  data.quantity_high = da.quantity_high;
 };
 
 onMounted(() => {

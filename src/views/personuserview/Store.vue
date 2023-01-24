@@ -33,10 +33,7 @@
             <div><span class="spa">product: </span> {{ i.name }}</div>
             <div><span class="spa">category: </span> {{ i.category }}</div>
             <div><span class="spa">price:</span> {{ i.price }}</div>
-            <div>
-              <span class="spa"> availability:</span>
-              {{ !i.availability ? 10 : i.availability }}
-            </div>
+
             <button
               class="openbutton"
               :style="

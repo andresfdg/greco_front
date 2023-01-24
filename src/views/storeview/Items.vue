@@ -10,7 +10,11 @@
           v-if="data.form"
           class="form_guield"
         >
-          <input type="number" placeholder="quantity" v-model="data.quantity" />
+          <input
+            type="number"
+            placeholder="quantity_max"
+            v-model="data.quantity"
+          />
           <input
             type="number"
             placeholder="life_time"
@@ -29,7 +33,6 @@
             <div>product: {{ i.name }}</div>
             <div>category: {{ i.category }}</div>
             <div>price: {{ i.price }}</div>
-            <div>availability:{{ !i.availability ? 10 : i.availability }}</div>
           </div>
         </div>
       </div>
