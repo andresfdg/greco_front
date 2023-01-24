@@ -29,7 +29,6 @@
           </tbody>
         </table>
       </div>
-      {{ data.orders }}
     </div>
   </div>
 </template>

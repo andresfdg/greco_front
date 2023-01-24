@@ -1,9 +1,11 @@
 <template>
   <div class="store vh-100">
     <div class="container">
-      <h1 class="titlestore">{{ data.store.name }}</h1>
+      <h1 class="titlestore p-1">{{ data.store.name }}</h1>
       <h3 class="products">Products</h3>
-      <router-link to="/home"><i class="bx bx-arrow-back"></i></router-link>
+      <div class="arrow">
+        <router-link to="/home"><i class="bx bx-arrow-back"></i></router-link>
+      </div>
 
       <div class="row">
         <div class="form d-flex justify-content-center">
@@ -18,13 +20,33 @@
         <span class="span d-flex justify-content-center" v-if="data.span"
           >added!</span
         >
-        <div v-for="(i, a) in data.items" :key="i" class="col-3 card m-5">
-          <router-link :to="`/guielditem/${i.id}/${i.name}/${i.price}/${i.open}`">
-            <div>product: {{ i.name }}</div>
-            <div>category: {{ i.category }}</div>
-            <div>price: {{ i.price }}</div>
-            <div>availability:{{ !i.availability ? 10 : i.availability }}</div>
-            <div>open: {{ i.open }}</div>
+        <div></div>
+        <div
+          v-for="(i, a) in data.items"
+          :key="i"
+          class="storeca card col-3 m-5"
+        >
+          <router-link
+            :to="`/guielditem/${router.params.id}/${i.id}/${i.name}/${i.price}/${i.open}`"
+            style="text-decoration: none; color: inherit"
+          >
+            <div><span class="spa">product: </span> {{ i.name }}</div>
+            <div><span class="spa">category: </span> {{ i.category }}</div>
+            <div><span class="spa">price:</span> {{ i.price }}</div>
+            <div>
+              <span class="spa"> availability:</span>
+              {{ !i.availability ? 10 : i.availability }}
+            </div>
+            <button
+              class="openbutton"
+              :style="
+                i.open == true
+                  ? 'background-color: #4efc03;color:green'
+                  : 'background-color: #fc3f3f;color:#8f2121'
+              "
+            >
+              open: {{ i.open }}
+            </button>
           </router-link>
         </div>
       </div>
@@ -121,12 +143,20 @@ onMounted(() => {
 </script>
 
 <style>
+.titlestore {
+  font-size: 40px;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
 .store {
   background-color: rgb(222, 245, 237);
 }
 
 .products {
   text-align: center;
+  font-size: 40px;
+  font-family: sans-serif;
 }
 .form input {
   border: none;
@@ -164,5 +194,34 @@ onMounted(() => {
 .span {
   color: crimson;
   font-size: 40px;
+}
+
+.storeca {
+  width: 200px;
+  background-color: ;
+  color: black;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.storeca :hover {
+  background-color: rgb(244, 244, 252);
+}
+
+.openbutton {
+  border-radius: 4px;
+  border: none;
+  padding: 4px;
+  margin: 4px;
+  font-weight: bold;
+}
+
+.spa {
+  font-weight: bold;
+  padding: 4px;
+}
+
+.arrow {
+  text-align: right;
 }
 </style>

@@ -1,9 +1,7 @@
 <template>
   <div class="orders container-fluid vh-100">
     <div class="container">
-      <p class="title">.</p>
-      <router-link to="/home"><i class="bx bx-arrow-back"></i></router-link>
-      <p class="title mt-1">My orders</p>
+      <p class="titleor">My orders</p>
 
       <div>
         <table class="table table-hover mt-1">
@@ -14,6 +12,7 @@
               <th scope="col">quantity</th>
               <th scope="col">store_id</th>
               <th scope="col">gield_id</th>
+              <th scope="col">stade</th>
             </tr>
           </thead>
           <tbody>
@@ -23,6 +22,7 @@
               <td>{{ i.quantity }}</td>
               <td>{{ i.store_id }}</td>
               <td>{{ i.gield_id }}</td>
+              <td>{{ i.active }}</td>
             </tr>
           </tbody>
         </table>
@@ -59,14 +59,15 @@ onMounted(() => {
   background-color: rgb(222, 245, 237);
 }
 .table {
-  background-color: whitesmoke;
+  background-color: rgb(255, 255, 255);
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
     rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
-.title {
+.titleor {
   text-align: center;
   font-family: sans-serif;
-  font-weight: bold;
-  font-size: large;
+
+  font-size: 40px;
+  padding: 10px;
 }
 </style>

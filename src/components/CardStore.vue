@@ -1,5 +1,5 @@
 <template>
-  <div class="card montana mt-3">
+  <div class="montans card mt-3">
     <p class="title p-1 m-1">{{ title }}</p>
     <img
       class="m-1"
@@ -32,12 +32,16 @@ const props = defineProps({
 </script>
 
 <style>
-.montana {
+.montans {
   font-family: sans-serif;
 
   box-shadow: rgba(49, 255, 221, 0.25) 0px 6px 12px -2px,
     rgba(28, 205, 190, 0.508) 0px 3px 7px -3px;
   border-radius: 20px;
+}
+
+.montans:hover {
+  background-color: rgb(230, 230, 230);
 }
 
 .title {
@@ -48,7 +52,5 @@ const props = defineProps({
 .x {
   font-size: 12px;
   font-weight: bold;
-}
-.s {
 }
 </style>

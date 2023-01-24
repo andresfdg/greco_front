@@ -16,7 +16,7 @@
 
       <div class="cont">
         <div>
-          <h4>create item</h4>
+          <h4>Create Item!</h4>
           <form class="form" @submit.prevent="addItem">
             <label>
               <input
@@ -83,7 +83,7 @@
               />
             </label>
 
-            <button>add</button>
+            <button><i class="bx bxs-add-to-queue"></i></button>
             <span v-if="data.span"> added!</span>
           </form>
         </div>
@@ -202,9 +202,19 @@ onMounted(() => {
 .form {
   display: flex;
   flex-direction: column;
+  border-radius: 8px;
 }
 .form input {
   padding: 10px;
+  border-radius: 4px;
+  border: none;
+  margin: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.form select {
+  padding: 5px;
   border-radius: 4px;
   border: none;
   margin: 10px;
@@ -228,9 +238,13 @@ onMounted(() => {
   border-radius: 4px;
   padding: 8px;
   margin: 10px;
-  background-color: cadetblue;
+  background-color: rgb(106, 181, 184);
   font-size: 20px;
   font-weight: bold;
+}
+
+.cont button:hover {
+  background-color: rgb(126, 208, 210);
 }
 
 .adds {

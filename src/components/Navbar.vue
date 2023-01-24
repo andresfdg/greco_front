@@ -34,7 +34,15 @@
             >
           </li>
           <li class="nav-item" v-if="store.auth == 'Person'">
-            <router-link to="/gield" class="nav-link active">gield</router-link>
+            <router-link to="/gield" class="nav-link active"
+              >MyGuilds</router-link
+            >
+          </li>
+
+          <li class="nav-item" v-if="store.auth == 'Store'">
+            <router-link to="/homestore" class="nav-link active"
+              >Home</router-link
+            >
           </li>
           <li class="nav-item" v-if="store.auth == 'Store'">
             <router-link to="/items" class="nav-link active">Items</router-link>
@@ -45,9 +53,9 @@
             >
           </li>
           <li class="nav-item" v-if="store.auth">
-            <router-link @click="logout" to="/" class="nav-link active"
-              >LogOut</router-link
-            >
+            <router-link @click="logout" to="/" class="nav-link active">
+              <span class="logout">LogOut </span>
+            </router-link>
           </li>
         </ul>
       </div>
@@ -70,4 +78,22 @@ const logout = () => {
 };
 </script>
 
-<style></style>
+<style>
+.navbar {
+  box-shadow: rgba(199, 199, 199, 0.25) 0px 6px 12px -2px,
+    rgba(163, 163, 163, 0.3) 0px 3px 7px -3px;
+}
+
+.logout {
+  background-color: crimson;
+  padding: 8px;
+  border-radius: 4px;
+  font-family: sans-serif;
+  color: antiquewhite;
+  font-weight: bold;
+}
+
+.logout:hover {
+  background-color: red;
+}
+</style>

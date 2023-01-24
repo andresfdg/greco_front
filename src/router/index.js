@@ -74,7 +74,7 @@ const router = createRouter({
       component: () => import("../views/storeview/StoreGieldOrders.vue"),
     },
     {
-      path: "/guielditem/:id/:name/:price/:open",
+      path: "/guielditem/:it/:id/:name/:price/:open",
       name: "/guielditem/:id/:name/:price/:open",
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route

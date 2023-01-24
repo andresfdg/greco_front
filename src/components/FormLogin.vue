@@ -26,7 +26,7 @@
           <option value="Store">Store</option>
         </select>
 
-        <button>Login</button>
+        <button class="loginb">Login</button>
         <span class="n" v-if="data.alert">Email/Password Fail</span>
       </form>
 
@@ -162,7 +162,15 @@ onMounted(() => {});
   padding: 10px;
   margin-top: 10px;
   margin-inline: 90px;
-  background-color: rgb(220, 220, 220);
+  background-color: powderblue;
   font-weight: bold;
+}
+
+.select:hover {
+  background-color: rgb(144, 221, 232);
+}
+
+.loginb:hover {
+  background-color: rgb(243, 216, 182);
 }
 </style>

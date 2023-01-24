@@ -1,51 +1,93 @@
 <template>
   <div class="guield vh-100">
     <div class="container">
-      <h1>gield</h1>
+      <div>.</div>
+      <h1 class="titleguield">Item Guilds</h1>
       <div class="mt-5"></div>
-      <router-link class="mt-3" to="/home"
-        ><i class="bx bx-arrow-back"></i
-      ></router-link>
-
-      <div>
-        <form @submit.prevent="craete_order" class="formitem" v-if="data.form">
-          <input type="number" placeholder="quantity" v-model="data.quantity" />
-          <button>add</button>
-          <div>cost:{{ router.params.price * data.quantity }}</div>
-          <div>discount: {{ data.discount }}%</div>
+      <div class="alin">
+        <div class="arrow">
+          <router-link class="mt-3" :to="`/homestore/${router.params.it}`"
+            ><i class="bx bx-arrow-back"></i
+          ></router-link>
           <div>
-            total:{{
+            <button
+              class="btguild"
+              v-if="data.open"
+              @click="() => activeformguild()"
+            >
+              Create new Guild
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="fit">
+        <form @submit.prevent="craete_order" class="formitem" v-if="data.form">
+          <span class="titlespan">How many items do you want?</span>
+          <input type="number" placeholder="quantity" v-model="data.quantity" />
+          <button class="b"><i class="bx bx-cart-add"></i></button>
+          <div>
+            <span class="spa">cost:</span>
+            {{ router.params.price * data.quantity }}
+          </div>
+          <div>
+            <span class="spa">discount: </span>
+            {{ data.discount }}%
+          </div>
+          <div>
+            <span class="spa">total: </span>
+            {{
               router.params.price * data.quantity -
               router.params.price * data.quantity * (data.discount / 100)
             }}
           </div>
-          <span>added</span>
         </form>
-        <p  v-if="data.open">Or</p>
-        <button  v-if="data.open" @click="() => activeformguild()">Create new Guild</button>
       </div>
 
-      <div>
-        <form @submit.prevent="craete_guild" class="formitemguild" v-if="data.formguild">
+      <div class="fit">
+        <form
+          @submit.prevent="craete_guild"
+          class="formitem"
+          v-if="data.formguild"
+        >
           <input type="number" placeholder="quantity" v-model="data.quantity" />
-          <input type="number" placeholder="Guild size in items" v-model="data.quantity_max" />
-          <input type="number" placeholder="duration in days" v-model="data.life_time" />
-          <button>Create</button>
+          <input
+            type="number"
+            placeholder="Guild size in items"
+            v-model="data.quantity_max"
+          />
+          <input
+            type="number"
+            placeholder="duration in days"
+            v-model="data.life_time"
+          />
+          <button class="btguild">create!</button>
         </form>
       </div>
 
       <div class="row">
         <div
-          class="g card col-3 m-5 d-flex justify-content-center"
+          class="guildca card col-3 m-5 d-flex justify-content-center"
           v-for="i in data.guields"
           :key="i"
           @click="() => activeform(i)"
         >
-          <div>gield_id: {{ router.params.name }}</div>
-          <div>actual_quantity: {{ i.actual_quantity }}</div>
-          <div>discount: {{ i.discount }}</div>
-          <div>quantity_max: {{ i.quantity_max }}</div>
-          <div>state: {{ i.active }}</div>
+          <div class="alm">
+            <div>
+              <div>gield_id: {{ router.params.name }}</div>
+              <div>actual_quantity: {{ i.actual_quantity }}</div>
+              <div>discount: {{ i.discount }}</div>
+              <div>quantity_max: {{ i.quantity_max }}</div>
+              <div>state: {{ i.active }}</div>
+            </div>
+            <img
+              class="mt-3"
+              src="../../assets/guild.png"
+              alt=""
+              width="60"
+              height="80"
+            />
+          </div>
         </div>
       </div>
       {{ data.id_guield }}
@@ -66,13 +108,11 @@ const data = reactive({
 
   form: false,
   formguild: false,
-  open:false,
+  open: false,
 
   itemid: 0,
   quantity_max: "",
   life_time: "",
-  
-  
 });
 
 const router = useRoute();
@@ -93,18 +133,17 @@ const getguields = async () => {
 const activeform = (i) => {
   data.discount = i.discount;
   data.id_guield = i.id;
-  data.form = true;
-  data.formguild=false;
+  data.form = !data.form;
+  data.formguild = false;
 
-  const isopen = router.params.open == 'true';
+  const isopen = router.params.open == "true";
   data.open = isopen;
-
 };
 
 const activeformguild = () => {
   data.form = false;
-  data.formguild=true;
-  data.open=false;
+  data.formguild = true;
+  data.open = false;
 };
 
 const craete_order = async () => {
@@ -149,7 +188,6 @@ const craete_guild = async () => {
   getguields();
 };
 
-
 onMounted(() => {
   getguields();
 });
@@ -159,14 +197,13 @@ onMounted(() => {
 .guield {
   background-color: rgb(222, 245, 237);
 }
-.g {
-  background-color: rgb(66, 66, 66);
-  height: 200px;
-  border: none;
-  font-family: sans-serif;
-  font-size: 20px;
-  font-weight: bold;
-  color: beige;
+.guildca {
+  padding: 10px;
+  width: 280px;
+
+  color: black;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
 .formitem {
@@ -174,5 +211,82 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   width: 200px;
+  background-color: rgb(90, 219, 150);
+  border-radius: 4px;
+}
+.titleguield {
+  text-align: center;
+  font-size: 40px;
+  font-family: sans-serif;
+}
+
+.alm {
+  display: flex;
+  justify-content: space-between;
+}
+.arrow {
+  text-align: right;
+}
+.bx-arrow-back {
+  font-size: 40px;
+  background-color: white;
+  color: black;
+  border-radius: 4px;
+}
+
+.fit {
+  display: flex;
+  justify-content: center;
+  border: none;
+}
+.fit input {
+  border: none;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 4px;
+}
+.b {
+  border: none;
+  margin: 5px;
+  border-radius: 4px;
+  background-color: rgb(35, 122, 35);
+  font-size: 25px;
+  color: gold;
+}
+
+.titlespan {
+  padding: 4px;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.b:hover {
+  background-color: rgb(47, 101, 50);
+}
+
+.spa {
+  font-weight: bold;
+}
+
+.alin {
+  display: flex;
+  flex-direction: column;
+}
+.btguild {
+  background-color: rgb(255, 238, 127);
+  margin: 10px;
+  border: none;
+  padding: 10px;
+  font-size: 18px;
+  font-family: sans-serif;
+  font-weight: bold;
+  border-radius: 4px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.btguild:hover {
+  background-color: rgb(249, 223, 54);
 }
 </style>

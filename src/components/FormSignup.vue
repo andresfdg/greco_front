@@ -5,10 +5,10 @@
         <img src="../assets/log.jpeg" alt="" height="60" />
         <br />
         <span>Sign up</span>
-        <div class="button">
-          <button @click="activeform">User</button>
+        <div>
+          <button class="button1" @click="activeform">User</button>
           <span class="or">or</span>
-          <button @click="activeform2">Store</button>
+          <button class="button1" @click="activeform2">Store</button>
         </div>
         <span v-if="data.form">User</span>
         <span v-if="data.form2">Store</span>
@@ -176,7 +176,7 @@ const signupuser = async () => {
   setTimeout(() => {
     router.push("/");
     data.userc = false;
-  }, 2000);
+  }, 1000);
 };
 
 const signupstore = async () => {
@@ -190,7 +190,7 @@ const signupstore = async () => {
   setTimeout(() => {
     router.push("/");
     data.userc = false;
-  }, 2000);
+  }, 1000);
 };
 
 const activeform = () => {
@@ -207,7 +207,7 @@ const activeform2 = () => {
 .form {
   text-align: center;
   background-color: white;
-  padding: 2rem;
+  padding: 15px;
   border-radius: 10px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
     rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
@@ -281,5 +281,21 @@ const activeform2 = () => {
   font-size: 30px;
   color: forestgreen;
   font-weight: bold;
+}
+
+.button1 {
+  margin: 12px;
+  border-radius: 5px;
+  font-size: 18px;
+  border: none;
+  padding: 8px;
+  font-weight: bold;
+  background-color: antiquewhite;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.button1:hover {
+  background-color: rgb(250, 219, 178);
 }
 </style>
