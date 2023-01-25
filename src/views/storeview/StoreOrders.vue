@@ -20,7 +20,7 @@
               <td>{{ i.price }}</td>
               <td>{{ i.gield_id }}</td>
               <td>{{ i.total_ord }}</td>
-              <td>x</td>
+              <td>{{ i.active }}</td>
               <td>
                 <router-link :to="`storegieldorder/${i.gield_id}`">
                   <i class="bx bx-search-alt"></i
